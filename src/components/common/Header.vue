@@ -13,9 +13,11 @@
 </template>
 
 <style lang="scss" scoped>
+* {
+  background-color: #003547;
+}
 .header {
   display: flex;
-  background-color: #02798b;
   height: 100px;
   margin: 0;
   justify-content: space-between;
