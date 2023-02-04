@@ -14,12 +14,12 @@
 
 <style lang="scss" scoped>
 * {
-  background-color: #003547;
+  background-color: #605c41;
 }
-.header {
+header {
   display: flex;
   height: 100px;
-  margin: 0;
+  margin: 0 auto;
   justify-content: space-between;
 }
 
