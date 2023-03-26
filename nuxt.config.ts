@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  ssr: true,
+  ssr: false,
   runtimeConfig: {
     public: {
       apiKey: process.env.apiKey,
@@ -17,4 +17,16 @@ export default defineNuxtConfig({
       measurementId: process.env.measurementId,
     },
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import "@/assets/scss/robber.scss";
+          `,
+        },
+      },
+    },
+  },
+  css: ['~/../node_modules/highlight.js/styles/base16/tomorrow-night.css'],
 })

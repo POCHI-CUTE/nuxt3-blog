@@ -27,7 +27,7 @@ header {
   color: white;
   display: flex;
   align-items: center;
-  margin-left: 2%;
+  margin-left: 2em;
 }
 
 .home:hover {

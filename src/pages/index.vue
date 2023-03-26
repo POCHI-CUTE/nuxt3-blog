@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import { getDocs, collection } from 'firebase/firestore'
+import { useState } from '#app'
+import { dbState } from '~/public/types/article'
 
-const { $db } = useNuxtApp()
-const db = $db()
-// TODO:cache実装
-const getData = (await getDocs(collection(db, 'articles'))).docs
-
-const sortData = computed(() => {
-  return getData.sort((a, b) => {
-    return b.data().postTime - a.data().postTime
-  })
-})
+const article = useState('article')
+const articleObj = article.value as dbState
 </script>
 
 <template>
   <div class="article__index">
     <ul>
-      <li v-for="article in sortData" :key="article.id">
-        <NuxtLink :to="`/${article.id}`">
+      <li v-for="article in articleObj" :key="article.titleId">
+        <NuxtLink :to="`/${article.titleId}`">
           <article class="article">
-            <h2 class="article__title">{{ article.data().title }}</h2>
-            <div class="article__posttime">{{ article.data().postTime.toDate().toDateString() }}</div>
+            <h2 class="article__title">{{ article.title }}</h2>
+            <div class="article__posttime">
+              <div class="article__created">created : {{ article.createdDate }}</div>
+              <div v-if="article.updatedDate">updated : {{ article.updatedDate }}</div>
+            </div>
           </article>
         </NuxtLink>
       </li>
@@ -59,8 +55,13 @@ li > article {
   }
 
   &__posttime {
+    display: flex;
+    font-size: small;
     padding-top: 1em;
     color: #91a3a3;
+  }
+  &__created {
+    margin-right: 1em;
   }
 }
 
