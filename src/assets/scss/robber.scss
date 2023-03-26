@@ -173,7 +173,6 @@
     background-color: #fffaf0;
     &::before {
       content: '';
-      mask: url('@/assets/svgs/info.svg');
       mask-size: cover;
       background-color: #e5d187;
     }
@@ -182,7 +181,6 @@
     background-color: #fff7f6;
     &::before {
       content: '';
-      mask: url('@/assets/svgs/alert.svg');
       mask-size: cover;
       background-color: #f6a2a2;
     }
@@ -191,7 +189,6 @@
     background-color: #fafff6;
     &::before {
       content: '';
-      mask: url('@/assets/svgs/edit.svg');
       mask-size: cover;
       background-color: #9bbc7e;
       top: 1em;
