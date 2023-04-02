@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, get, child } from 'firebase/database'
 import { dbState } from '~/public/types/article'
+import { getAnalytics, logEvent } from 'firebase/analytics'
 
 export default defineNuxtRouteMiddleware(async () => {
   const config = useRuntimeConfig()
@@ -16,6 +17,8 @@ export default defineNuxtRouteMiddleware(async () => {
   }
 
   const app = initializeApp(firebaseConfig)
+  const analytics = getAnalytics(app)
+  logEvent(analytics, 'access')
 
   const database = getDatabase(app)
   const dbRef = ref(database)
